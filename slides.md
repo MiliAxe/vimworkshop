@@ -368,7 +368,7 @@ gE    Move backward to end of the previous WORD
 ```
 
 The difference between WORD and word is that WORD includes special characters too. Both are separated
-by whitespace
+by whitespace. To learn more, refer to `:h word or :h WORD`
 
 ## Word navigation cont.
 
@@ -379,3 +379,134 @@ const hello = "world";
 ```
 
 With your cursor at the start of the line, to go to the end of the line with `l`, it will take you 21 key presses. Using `w`, it will take 6. Using `W`, it will only take 4. Both word and WORD are good options to travel short distance.
+
+## Sentence and paragraph navigation
+
+You may navigate between sentences and paragraphs too.
+
+```
+(    Jump to the previous sentence
+)    Jump to the next sentence
+```
+
+Let's talk about what a sentence is first. A sentence ends with either `. ! ?` followed by an EOL, a space, or a tab. You can jump to the next sentence with `)` and the previous sentence with `(`.
+
+## Sentence navigation example
+
+Take a look at the following example:
+
+```
+I am a sentence. I am another sentence because I end with a period. I am still a sentence when ending with an exclamation point! What about question mark? I am not quite a sentence because of the hyphen - and neither semicolon ; nor colon :
+
+There is an empty line above me.
+```
+
+## Paragraph navigation
+
+You can also move between paragraphs using the following keybinds:
+
+```
+{    Jump to the previous paragraph
+}    Jump to the next paragraph
+```
+
+Paragraphs (most of the time) start after _an empty line_. Let's look at an example:
+
+## Paragraph navigation example
+
+```
+Hello. How are you? I am great, thanks!
+Vim is awesome.
+It may not easy to learn it at first...- but we are in this together. Good luck!
+
+Hello again.
+
+Try to move around with ), (, }, and {. Feel how they work.
+You got this.
+```
+
+## Match navigation
+
+One of the coolest navigations is the **_match navigations_**.
+
+```
+%    Navigate to another match, usually works for (), [], {}
+```
+
+By pressing it, you will jump to the other match of the braces.
+
+## Match navigation example
+
+```
+(define (fib n)
+  (cond ((= n 0) 0)
+        ((= n 1) 1)
+        (else
+          (+ (fib (- n 1)) (fib (- n 2)))
+        )))
+```
+
+Jump to the corresponding `(` or `)`.
+
+## Line number navigation
+
+You can jump to line number `n` with `nG`. For example, if you want to jump to line 7, use `7G`. To jump to the first line, use either `1G` or `gg`. To jump to the last line, use `G`.
+
+Often you don't know exactly what line number your target is, but you know it's approximately at 70% of the whole file. In this case, you can do `70%`. To jump halfway through the file, you can do `50%`.
+
+## Line number navigations
+
+```
+gg    Go to the first line
+G     Go to the last line
+nG    Go to line n
+n%    Go to n% in file
+```
+
+## Scrolling
+
+Using your mouse to scroll can be tiring.
+
+```
+Ctrl-E    Scroll down a line
+Ctrl-D    Scroll down half screen
+Ctrl-F    Scroll down whole screen
+Ctrl-Y    Scroll up a line
+Ctrl-U    Scroll up half screen
+Ctrl-B    Scroll up whole screen
+```
+
+## Scrolling relatively
+
+Or scroll relatively to the current cursor location!
+
+```
+zt    Bring the current line near the top of your screen
+zz    Bring the current line to the middle of your screen
+zb    Bring the current line near the bottom of your screen
+```
+
+## Search Navigation
+
+Often you know that a phrase exists inside a file. You can use search navigation to very quickly reach your target. To search for a phrase, you can use `/` to search forward and `?` to search backward. To repeat the last search you can use `n`. To repeat the last search going opposite direction, you can use `N`.
+
+```
+/    Search forward for a match
+?    Search backward for a match
+n    Repeat last search in same direction of previous search
+N    Repeat last search in opposite direction of previous search
+```
+
+## Search navigation
+
+Suppose you have this text:
+
+```
+let one = 1;
+let two = 2;
+one = "01";
+one = "one";
+let onetwo = 12;
+```
+
+If you are searching for "let", run `/let`. To quickly search for "let" again, you can just do `n`. To search for "let" again in opposite direction, run `N`. If you run `?let`, it will search for "let" backwards. If you use `n`, it will now search for "let" backwards (`N` will search for "let" forwards now).
