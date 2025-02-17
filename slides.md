@@ -6,13 +6,112 @@ date: Winter 1403-1404
 # slide-level: 2
 ---
 
+::: notes
+
+todo before the workshop:
+
+- Set recording via obs
+- Set screenkey
+- have proper dual monitor setup
+
+:::
+
+---
+
+## Whoami?
+
+- I have a crazy obsession with efficiency
+- I spend more time configuring my tools than using them
+- I like exploring different tools that are usually not popular
+
+::: notes
+
+just a fellow computer engineering student like you...
+
+I am very happy to have a chance to share my knowledge with you today. (thanks to CESA Libre)
+
+:::
+
+---
+
+## What is this workshop about?
+
+- This workshop is about Vim and Neovim
+- We will cover the basics of Vim and Neovim
+- We will cover some advanced topics
+
+::: notes
+
+I will try my best to describe vim step-by-step and in a way that is easy to understand.
+
+We have decided to have multiple sessions for this workshop. This is the first session and we will cover the basics.
+
+I will try to explain everything throughly though, so don't worry if you are a complete beginner.
+
+:::
+
+---
+
+## Hopefully by the end of this workshop...
+
+- I have convinced you to give Vim a try :)
+  - Or at least you have learned something new out of the university's curriculum
+- You have learned the basics of Vim
+- Get a taste of the power of Vim
+- Got addicted to Vim?
+
+::: notes
+
+I personally really value learning things out of the boring university curriculum. I don't really
+like it when I see that no one is really interested in learning nerdy stuff like Vim.
+
+Hopefully these series of workshops will change that.
+
+:::
+
+---
+
 ## What is Vim?
 
 A highly configurable _(and addictive)_ text editor built to enable efficient text editing.
 
 ![Vim Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Vimlogo.svg/1200px-Vimlogo.svg.png)
 
-## No more...
+---
+
+## A text editor?
+
+Yes, a text editor. But not like the ones you are used to.
+
+You might be used to using IDEs like:
+
+- Visual Studio
+- PyCharm
+- IntelliJ IDEA, etc.
+
+---
+
+## How are text editors different?
+
+- Text editors are designed to be lightweight and fast.
+- They aren't really designed to be a complete development environment.
+- They are designed to be fast and efficient at editing text.
+- But they can be configured to be a complete development environment!
+
+---
+
+## Why use text editors?
+
+Sometimes...
+
+- You don't need all the features of an IDE
+- They are faster and more lightweight
+- They are more configurable
+- Your computer is slow, and you need something faster
+
+---
+
+## No more
 
 - Constantly switching between mouse and keyboard
 - Reaching for arrow keys
@@ -20,11 +119,33 @@ A highly configurable _(and addictive)_ text editor built to enable efficient te
 - Reaching for the home/end keys
 - And so on...
 
+::: notes
+
+I am just tired of seeing people in the hub doing naruto hand signs on their keyboards.
+
+Time to change that!
+
+:::
+
+---
+
+## Where did it all start?
+
+Vim is a clone of the text editor Vi, which was written by Bill Joy in 1976. Vim stands for Vi IMproved!
+
+Vim was designed to be a more powerful version of Vi.
+
+---
+
 ## Who made Vim?
 
 Vim was created by Bram Moolenaar (RIP) in 1991.
 
+---
+
 ![Bram Moolenaar](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Bram_Moolenaar_in_2007.jpg/1200px-Bram_Moolenaar_in_2007.jpg)
+
+---
 
 ## What is Neovim?
 
@@ -36,15 +157,37 @@ _We will be using Neovim in this workshop._
 
 ![Neovim Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Neovim-logo.svg/1200px-Neovim-logo.svg.png)
 
+::: notes
+
+Lua is an absolutely amazing language. It is very easy to learn and very powerful. It is also very fast.
+
+Lua has enabled many people to write great plugins for Neovim.
+
+:::
+
+---
+
 ## What do you mean by configurable?
+
+---
 
 ## From...
 
-![This](https://news.tuxmachines.org/i/2022/10/vim-editor-09-2022-2.png)
+![This](media/2025-02-16-18-17-09.png)
+
+---
 
 ## To...
 
 ![This](https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_neovim-configuration.jpeg)
+
+::: notes
+
+show your own vim setup
+
+:::
+
+---
 
 ## Keep in mind...
 
@@ -54,47 +197,103 @@ Getting used to vim is a process that takes time and practice.
 
 ![The learning curve](https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzlawo5ozdl132ooq1yjf.jpg)
 
+::: notes
+
+I myself can't imagine going back to a normal text editor. I have tried many text editors and IDEs, but I always come back to Vim. Furthermore,
+
+ I sometimes use VSCode for some tasks though, but I make sure to have the Vim extension installed.
+
+:::
+
+---
+
 ## Installing Neovim
 
 - Most Linux distributions have neovim in their repositories
   (it is recommended to install the latest version)
 - There is a vscode extension for vim, emulating vim
 - Recommended approach for macOS is to use Homebrew
-- Windows? Switch to Linux or use WSL
 
 Official installation instructions can be found [here](https://github.com/neovim/neovim/blob/master/INSTALL.md)
+
+---
+
+## On Windows...
+
+The experience is quite a hit or miss on native windows. It is technically possible to use neovim on Windows, but it is not recommended.
+
+The recommended approach is to use WSL2. **The Linux development environment is better anyway.** :)
+
+---
 
 ## Running neovim
 
 Running it is as simple as running `nvim` in your terminal.
 
-::: notes
-Run `nvim` in your terminal
-:::
+---
 
 ## Let's write something
 
+---
+
 Oops, looks like it's not as simple as it is in vscode.
 
-## HELP I WANT TO EXIT
+---
+
+## How do I exit vim?
+
+
+![HELP](https://programmerhumor.io/wp-content/uploads/2022/09/programmerhumor-io-linux-memes-programming-memes-deaafa4f3611a70.png)
+
+---
+
+## Vim Modes
+
+Vim has different modes for different tasks. The most common ones are:
+
+- **Normal mode**: For navigation and commands. press `ESC` to enter normal mode.
+- **Insert mode**: For inserting text. press `i` to enter insert mode.
+- **Visual mode**: For selecting text.
+
+You can switch between these modes to perform different actions efficiently.
+
+::: notes
+
+We will be covering normal mode today mainly. We will also cover insert mode and visual mode.
+
+Show a demo of switching between modes. And just show their usage.
+
+:::
+
+---
+
+## Quitting Vim
 
 The most common way to exit vim is by typing `:quit` or `:q` and pressing enter.
 
 But this only works if you haven't made any changes, and you are in normal mode. (You can press `ESC` to go to normal mode. More on this later)
 
-![HELP](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRJFWHjW7Xb1Wji8zmNitleimAP_461b6nNw&s)
+To quit without saving you can type `:quit!` or `:q!` and press enter.
+
+---
 
 ## Saving changes
 
 To save changes you can type `:write` or `:w` and press enter.
 
+**You are entering a command right now! you can tell because of the `:` at the beginning of the line.**
+
 If you want to save and exit you can combine and type `:wq` and press enter.
 
-To quit without saving you can type `:quit!` or `:q!` and press enter.
+
+
+---
 
 ## Help anywhere anytime
 
 You can always type `:help {some-command}` and press enter to get help on any topic.
+
+---
 
 ## Opening a file
 
@@ -102,9 +301,13 @@ The simplest way to open a file is by including the file path after the `nvim` c
 
 You can open multiple files by including multiple file paths after the `nvim` command. For example `nvim slides.md notes.md`. But this will open the files in separate buffers.
 
+---
+
 ## Buffers
 
 A buffer is an in-memory space where you can write and edit some text. When you open a file in Vim, the data is bound to a buffer. When you open 3 files in Vim, you have 3 buffers.
+
+---
 
 ## Buffer commands
 
@@ -115,11 +318,15 @@ A buffer is an in-memory space where you can write and edit some text. When you 
 - `:buffer {number}` or `:b {number}` to go to a specific buffer
 - `:buffer {file-name}` or `:b {file-name}` to go to a buffer by file name
 
+---
+
 ## Windows
 
 A window is a viewport on a buffer. You can have multiple windows open at the same time.
 
 In simple terms, a window is what you see on your screen. It reflects a buffer.
+
+---
 
 ## Window commands
 
@@ -129,6 +336,8 @@ In simple terms, a window is what you see on your screen. It reflects a buffer.
 
 Now that you have multiple windows open, you can change the current window's
 buffer by the commands mentioned before.
+
+---
 
 ## Alternative window keybinds
 
