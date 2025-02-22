@@ -346,6 +346,8 @@ buffer by the commands mentioned before.
 - `Ctrl + w then c` to close the current window
 - `ctrl + w then o` to close all windows except the current one
 
+---
+
 ## Moving between windows
 
 - `Ctrl + w then w` to move to the next window
@@ -356,17 +358,23 @@ buffer by the commands mentioned before.
 
 Pay extra attention to the `h`, `j`, `k`, and `l` keys. They are the foundation of moving around in Vim.
 
+---
+
 ## Closing all buffers
 
 Typing `:quit` or `:q` will only close the current buffer. To close all buffers you can type `:qa` or `:qall`.
 
 Feel free to combine it with `!` to force close all buffers. or with `w` to save changes before closing all buffers. e.g. `:wqa` or `:qa!`
 
+---
+
 ## Tabs
 
 Tabs are a way to organize your windows and buffers. They are not like "tabs" in other text editors. They are more like workspaces.
 
 They are basically a collection of windows.
+
+---
 
 ## Tab commands
 
@@ -376,27 +384,39 @@ They are basically a collection of windows.
 - `:tabclose` or `:tabc` to close the current tab
 - and so on...
 
+---
+
 ## The cool -p flag
 
 You can open multiple files in tabs by using the `-p` flag. For example `nvim -p slides.md notes.md`.
 
+---
+
 ## Use them wisely!
 
 You have learned what buffers, windows and tabs are and how they work in Vim. Now that you understand them better, you can use them in your own workflow.
+
+---
 
 ## Opening files
 
 You can open files using the `:find` command. For example `:find slides.md`. The `:edit` command works the same way. The difference
 is out of the scope of this workshop. (Hint: `:find` is more comprehensive)
 
+---
+
 ## The builtin file explorer
 
 By specifying a directory path after the `nvim` command or `:e` or `:find` command, you can open the builtin file explorer.
 The builtin file explorer is a simple way to navigate through your files and directories. We might cover a cooler file explorer later.
 
+---
+
 ## The Vim grammar
 
 Don't worry, it's not that hard
+
+---
 
 ## The Vim grammar
 
@@ -407,6 +427,8 @@ verb + noun
 ```
 
 i.e. "Learn (verb) neovim (noun)"
+
+---
 
 ## Nouns (Motions)
 
@@ -422,6 +444,8 @@ w    Move forward to the beginning of the next word
 $    Go to the end of the line
 ```
 
+---
+
 ## Verbs (Operators)
 
 According to `:h operator`, Vim has 16 operators. However, in experience, learning these 3 operators is enough for 80% of the editing needs:
@@ -434,6 +458,8 @@ c    Delete text, save to register, and start insert mode
 
 Use `p` (After cursor) or `P` (Before cursor) to paste your copied text
 
+---
+
 ## The grammar in practice
 
 Now that you know the grammar and the verbs and the nouns, let's put them into action.
@@ -444,6 +470,8 @@ See the following and try to guess what they do:
 - `dw`: [delete from your current location to the beginning of the next word]{.fragment}
 - `c}`: [change from your current location to the end of the current paragraph]{.fragment}
 
+---
+
 ## Combine them with count!
 
 Motions also accept count number as arguments. If you need to go up 5 lines, instead of pressing `k` 3 times, you can do `3k`. Count works with Vim grammar.
@@ -452,9 +480,13 @@ Motions also accept count number as arguments. If you need to go up 5 lines, ins
 - To delete the next two words: `d2w`.
 - To change the next two lines: `c2j`.
 
+---
+
 ## Confused?
 
 Don't worry, it's compeletely normal! Key is patience and repitition and of course, willpower :)
+
+---
 
 ## Text comes structured
 
@@ -470,6 +502,8 @@ const hello = function () {
 You may notice that we have some structures! the `{}` of the function definition, the `()` of the function call, the `""` of the string definition
 and so on...
 
+---
+
 ## Cooler nouns (text objects)
 
 Imagine you are somewhere inside a pair of parentheses like `(hello Vim)`], and you need to delete the entire phrase inside the parentheses. How can you quickly do it? Is there a way to delete the "group" you are inside?
@@ -480,6 +514,8 @@ The answer are **text objects** they can be used with operators to specify a use
 i + object    Inner text object
 a + object    Outer text object
 ```
+
+---
 
 ## Text objects example
 
@@ -493,6 +529,8 @@ const hello = function () {
 - To delete the entire "Hello Vim": `di(`.
 - To delete the content of function (surrounded by `{}`): `di{`.
 - To delete the "Hello" string: `diw`.
+
+---
 
 ## HTML example
 
@@ -515,6 +553,8 @@ If your cursor is on "div":
 - To delete everything: `dat`.
 - To delete "div": `di<`.
 
+---
+
 ## More text objects
 
 ```
@@ -531,9 +571,13 @@ t         XML tags
 `         A pair of ` `
 ```
 
+---
+
 ## Let's get moving
 
 No more switching back-and-forth between your mouse and keyboard.
+
+---
 
 ## Foundation of vim
 
@@ -549,11 +593,15 @@ l   Right
 Don't give in to the tempatation of using your arrow keys/mouse.
 Over time, you will be addicted to the simplicity of this.
 
+---
+
 ## Why h j k l?
 
 The original creator of vi used the ADM-3A terminal
 
 ![ADM-3A](https://dave.cheney.net/wp-content/uploads/2017/08/Screen-Shot-2017-08-21-at-14.15.25-1024x420.png)
+
+---
 
 ## Count your move
 
@@ -562,6 +610,7 @@ You can combine the navigation with numbers beforehand:
 ```
 [count] + move
 ```
+---
 
 ## Word navigation
 
@@ -579,6 +628,8 @@ gE    Move backward to end of the previous WORD
 The difference between WORD and word is that WORD includes special characters too. Both are separated
 by whitespace. To learn more, refer to `:h word or :h WORD`
 
+---
+
 ## Word navigation cont.
 
 For example, suppose you have:
@@ -588,6 +639,8 @@ const hello = "world";
 ```
 
 With your cursor at the start of the line, to go to the end of the line with `l`, it will take you 21 key presses. Using `w`, it will take 6. Using `W`, it will only take 4. Both word and WORD are good options to travel short distance.
+
+---
 
 ## Sentence and paragraph navigation
 
@@ -600,6 +653,8 @@ You may navigate between sentences and paragraphs too.
 
 Let's talk about what a sentence is first. A sentence ends with either `. ! ?` followed by an EOL, a space, or a tab. You can jump to the next sentence with `)` and the previous sentence with `(`.
 
+---
+
 ## Sentence navigation example
 
 Take a look at the following example:
@@ -609,6 +664,8 @@ I am a sentence. I am another sentence because I end with a period. I am still a
 
 There is an empty line above me.
 ```
+
+---
 
 ## Paragraph navigation
 
@@ -620,6 +677,8 @@ You can also move between paragraphs using the following keybinds:
 ```
 
 Paragraphs (most of the time) start after _an empty line_. Let's look at an example:
+
+---
 
 ## Paragraph navigation example
 
@@ -634,6 +693,8 @@ Try to move around with ), (, }, and {. Feel how they work.
 You got this.
 ```
 
+---
+
 ## Match navigation
 
 One of the coolest navigations is the **_match navigations_**.
@@ -643,6 +704,8 @@ One of the coolest navigations is the **_match navigations_**.
 ```
 
 By pressing it, you will jump to the other match of the braces.
+
+---
 
 ## Match navigation example
 
@@ -657,11 +720,15 @@ By pressing it, you will jump to the other match of the braces.
 
 Jump to the corresponding `(` or `)`.
 
+---
+
 ## Line number navigation
 
 You can jump to line number `n` with `nG`. For example, if you want to jump to line 7, use `7G`. To jump to the first line, use either `1G` or `gg`. To jump to the last line, use `G`.
 
 Often you don't know exactly what line number your target is, but you know it's approximately at 70% of the whole file. In this case, you can do `70%`. To jump halfway through the file, you can do `50%`.
+
+---
 
 ## Line number navigations
 
@@ -671,6 +738,7 @@ G     Go to the last line
 nG    Go to line n
 n%    Go to n% in file
 ```
+---
 
 ## Scrolling
 
@@ -684,6 +752,7 @@ Ctrl-Y    Scroll up a line
 Ctrl-U    Scroll up half screen
 Ctrl-B    Scroll up whole screen
 ```
+---
 
 ## Scrolling relatively
 
@@ -695,6 +764,8 @@ zz    Bring the current line to the middle of your screen
 zb    Bring the current line near the bottom of your screen
 ```
 
+---
+
 ## Search Navigation
 
 Often you know that a phrase exists inside a file. You can use search navigation to very quickly reach your target. To search for a phrase, you can use `/` to search forward and `?` to search backward. To repeat the last search you can use `n`. To repeat the last search going opposite direction, you can use `N`.
@@ -705,6 +776,8 @@ Often you know that a phrase exists inside a file. You can use search navigation
 n    Repeat last search in same direction of previous search
 N    Repeat last search in opposite direction of previous search
 ```
+
+---
 
 ## Search navigation
 
