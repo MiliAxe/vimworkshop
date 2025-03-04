@@ -52,7 +52,7 @@ I will try to explain everything throughly though, so don't worry if you are a c
 
 ---
 
-## Hopefully by the end of this workshop...
+## Hopefully by the end of this workshop
 
 - I have convinced you to give Vim a try :)
   - Or at least you have learned something new out of the university's curriculum
@@ -171,13 +171,13 @@ Lua has enabled many people to write great plugins for Neovim.
 
 ---
 
-## From...
+## From
 
 ![This](media/2025-02-16-18-17-09.png)
 
 ---
 
-## To...
+## To
 
 ![This](https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/1_neovim-configuration.jpeg)
 
@@ -189,7 +189,7 @@ show your own vim setup
 
 ---
 
-## Keep in mind...
+## Keep in mind
 
 Getting used to vim is a process that takes time and practice.
 
@@ -218,7 +218,7 @@ Official installation instructions can be found [here](https://github.com/neovim
 
 ---
 
-## On Windows...
+## On Windows
 
 The experience is quite a hit or miss on native windows. It is technically possible to use neovim on Windows, but it is not recommended.
 
@@ -241,7 +241,6 @@ Oops, looks like it's not as simple as it is in vscode.
 ---
 
 ## How do I exit vim?
-
 
 ![HELP](https://programmerhumor.io/wp-content/uploads/2022/09/programmerhumor-io-linux-memes-programming-memes-deaafa4f3611a70.png)
 
@@ -284,8 +283,6 @@ To save changes you can type `:write` or `:w` and press enter.
 **You are entering a command right now! you can tell because of the `:` at the beginning of the line.**
 
 If you want to save and exit you can combine and type `:wq` and press enter.
-
-
 
 ---
 
@@ -392,7 +389,7 @@ You can open multiple files in tabs by using the `-p` flag. For example `nvim -p
 
 ---
 
-## Use them wisely!
+## Use them wisely
 
 You have learned what buffers, windows and tabs are and how they work in Vim. Now that you understand them better, you can use them in your own workflow.
 
@@ -472,7 +469,7 @@ See the following and try to guess what they do:
 
 ---
 
-## Combine them with count!
+## Combine them with count
 
 Motions also accept count number as arguments. If you need to go up 5 lines, instead of pressing `k` 3 times, you can do `3k`. Count works with Vim grammar.
 
@@ -508,7 +505,7 @@ and so on...
 
 Imagine you are somewhere inside a pair of parentheses like `(hello Vim)`], and you need to delete the entire phrase inside the parentheses. How can you quickly do it? Is there a way to delete the "group" you are inside?
 
-The answer are **text objects** they can be used with operators to specify a useful place to apply the operator on:
+The answer is **text objects** they can be used with operators to specify a useful place to apply the operator on:
 
 ```
 i + object    Inner text object
@@ -630,7 +627,7 @@ by whitespace. To learn more, refer to `:h word or :h WORD`
 
 ---
 
-## Word navigation cont.
+## Word navigation cont
 
 For example, suppose you have:
 
@@ -639,6 +636,33 @@ const hello = "world";
 ```
 
 With your cursor at the start of the line, to go to the end of the line with `l`, it will take you 21 key presses. Using `w`, it will take 6. Using `W`, it will only take 4. Both word and WORD are good options to travel short distance.
+
+---
+
+## Same line navigation
+
+```
+0    Move to the beginning of the line
+^    Move to the first non-blank character of the line
+$    Move to the end of the line
+```
+
+---
+
+## Same line navigation cont.
+
+You can also use the very useful `f` and `t` commands to move to a specific character on the same line.
+
+```
+f{char}    Move to the next occurrence of {char}
+t{char}    Move to the character before the next occurrence of {char}
+F{char}    Move to the previous occurrence of {char}
+T{char}    Move to the character after the previous occurrence of {char}
+```
+
+These commands can prevent you from spamming `l` or `h` to move to a specific character.
+
+You can also use `;` to repeat the last `f` or `t` command and `,` to repeat them in the opposite direction.
 
 ---
 
@@ -792,3 +816,142 @@ let onetwo = 12;
 ```
 
 If you are searching for "let", run `/let`. To quickly search for "let" again, you can just do `n`. To search for "let" again in opposite direction, run `N`. If you run `?let`, it will search for "let" backwards. If you use `n`, it will now search for "let" backwards (`N` will search for "let" forwards now).
+
+---
+
+## Searching under cursor
+
+You can also search for a specific word under the cursor! Useful for finding all occurrences of a variable name.
+
+```
+*    Search for the word under the cursor in the same direction
+#   Search for the word under the cursor in the opposite direction
+```
+
+---
+
+## Marking your location
+
+Sometimes you find yourself jumping between different locations in a file. You can mark your location with a letter and jump back to it later.
+
+```
+m{a-zA-Z}    Mark your location with a letter
+`{a-zA-Z}    Jump back to the location marked with a letter
+```
+
+---
+
+## Marking your location example
+
+In programming languages, you may have a function definition at the top of the file and you may want to jump back to it later. You can mark your location with `ma` and jump back to it with ``a`.
+
+---
+
+## Jumps 
+
+In Vim, you can "jump" to a different file or different part of a file with some motions. Not all motions count as a jump, though. Going down with `j` does not count as a jump. Going to line 10 with `10G` counts as a jump.
+
+---
+
+## Jump list
+
+```
+'       Go to the marked line
+`       Go to the marked position
+G       Go to the line
+/       Search forward
+?       Search backward
+n       Repeat the last search, same direction
+N       Repeat the last search, opposite direction
+%       Find match
+(       Go to the last sentence
+)       Go to the next sentence
+{       Go to the last paragraph
+}       Go to the next paragraph
+L       Go to the the last line of displayed window
+M       Go to the middle line of displayed window
+H       Go to the top line of displayed window
+[[      Go to the previous section
+]]      Go to the next section
+:s      Substitute
+:tag    Jump to tag definition
+```
+
+---
+
+## No need to memorize
+
+You don't really need to memorize the jump list. A good rule of thumb is that any motion that moves farther than a word is generally considered a jump.
+
+---
+
+## Why do we need jumps?
+
+Vim saves your jumps in a list. You can go back and forth between your jumps. This is useful when you are working on a project, and you need to jump between different parts of the file.
+
+```
+Ctrl-O    Go back to the previous jump
+Ctrl-I    Go forward to the next jump
+```
+
+---
+
+## Learn them gradually
+
+Don't get overwhelmed by all the motions and commands. Learn them gradually. Start with the basic motions and commands and gradually learn the more advanced ones.
+
+I recommenmd starting with the following 10 motions: `h, j, k, l, w, b, G, /, ?, n`. Repeat them until you are comfortable with them and you don't think about them anymore.
+
+---
+
+## Upgrading your arsenal
+
+Once you are comfortable with the basic ones, try to see where you can improve your workflow so that you can be more efficient.
+
+For example, you can try to use `f` and `t` to move to a specific character on the same line. You can also try to use `*` and `#` to search for the word under the cursor.
+
+---
+
+## Let's get inserting
+
+---
+
+## Insert mode
+
+Now that we have covered the basics of movement in Vim, let's talk about the insert mode.
+
+In insert mode, you can insert text into the buffer. You can enter insert mode by pressing `i` in normal mode. (We told this at the beginning of the workshop)
+
+---
+
+## Other ways to insert
+
+There are other ways to enter insert mode:
+
+```
+i    Insert text before the cursor
+I    Insert text before the first non-blank character of the line
+a    Append text after the cursor
+A    Append text at the end of line
+o    Starts a new line below the cursor and insert text
+O    Starts a new line above the cursor and insert text
+s    Delete the character under the cursor and insert text
+S    Delete the current line and insert text, synonym for "cc"
+gi   Insert text in same position where the last insert mode was stopped
+gI   Insert text at the start of line (column 1)
+```
+
+Notice the uppercase keybinds and their lowercase counterparts. They are similar but have different behaviors.
+
+**You don't need to memorize them all right now! I am mentioning them for the sake of refrence!**
+
+---
+
+## Repeating insert mode
+
+You can combine the insert mode with the count command. For example, if you want to insert 5 `a` characters, you can do `5ai<ESC>`. This will insert 5 `a` characters after the cursor.
+
+This also works with other insert mode commands.
+
+---
+
